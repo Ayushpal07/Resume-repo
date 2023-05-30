@@ -1,0 +1,114 @@
+<html>
+</!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>RESUME</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="main">
+      RESUME MAKER
+    </div>
+  </header>
+  <div class="container">
+    <h1>RESUME BUILDER</h1>
+    <form id="resumeForm">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" required><br>
+      <label for="headline">Headline:</label><br>
+      <input type="text" id="headline" required><br>
+      <label for="email">Email:</label><br>
+      <input type="text" id="email" required><br>
+      <label for="mobile">Mobile No:</label><br>
+      <input type="text" id="mobile" required><br>
+      <label for="address">address:</label><br>
+      <input type="text" id="address" required><br>
+      <label for="about_me">About Me:</label><br>
+      <input type="text" id="about_me" required><br>
+      <label for="experience">Experience:</label><br>
+      <label for="Company_name">Company Name:</label><br>
+      <input type="text" id="Company_name" required><br>
+      <label for="education">Education:</label><br>
+      <input type="text" id="education" required><br>
+      <label for="skills">Skills:</label><br>
+      <input type="text" id="skills" required><br>
+      <label for="Project">Project:</label><br>
+      <input type="text" id="project" required><br>
+      <label for="photo">Upload Photo:</label><br>
+      <input type="file" id="photo" accept="image/*" required><br>
+      <button id="resumeFormBtn" onclick="OnSubmitClick();" style="background-color: #007bff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 3px;
+      cursor: pointer;">Submit </button>
+    </form>
+    <div id="resumeSection"></div>
+    <script>
+      let base64String;
+      function OnSubmitClick(e) {
+       
+        const name = document.getElementById('name').value;
+        const headline = document.getElementById('headline').value;
+        const email = document.getElementById('email').value;
+        const mobile = document.getElementById('mobile').value;
+        const address = document.getElementById('address').value;
+        const about_me = document.getElementById('about_me').value;
+        const Company_name = document.getElementById('Company_name').value;
+        const education = document.getElementById('education').value;
+        const skills = document.getElementById('skills').value;
+        const project = document.getElementById('project').value;
+        const photo = document.getElementById('photo').value;
+       
+
+       
+        const resume = {
+          name, headline, email, mobile, address, about_me, Company_name, education, skills, project, base64String
+        };
+      
+        localStorage.setItem('resumeData', JSON.stringify(resume));
+
+      
+        window.open('second.html')
+      };
+
+
+
+      const input = document.getElementById('photo');
+
+   
+      input.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+
+        const reader = new FileReader();
+
+        
+        reader.onload = function () {
+         
+          base64String = reader.result;
+
+        };
+
+        
+        reader.readAsDataURL(file);
+      });
+
+    </script>
+  </div>
+  <footer>
+    <div class="footer-links">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-text">© 2023 Your Website. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>
